@@ -1,0 +1,217 @@
+{% extends "TunisieFeedsBundle::layout.html.twig" %}
+
+
+
+{% block content %}
+ {{ render(controller('TunisieFeedsBundle:Default:header')) }}
+
+
+  
+ <div class="container-fluid page-container" style="padding-top:34px; position:relative">
+    <div class="row-fluid">
+    <div class="main-ct">
+        
+<div class="ticker1 modern-ticker mt-scroll mt-round"><div class="mt-label" style="width: 52px;">NEWS:</div><div class="mt-news" style="width: 826px;">
+   
+        <ul style="margin-left: -383px;">
+                {% for item in pagination %}
+                <li><a href="{{ path('_detail_article', {'slug': item.slug}) }}" target="_self"><img class="img-circle" src="{{ asset('bundles/tunisiefeeds/images/news.gif') }}" />{{ item.title }}</a></li>
+                
+                
+        {% endfor %}   
+            </ul>
+</div></div>
+<div class="row-fluid">
+    <div class="span12 sliderContent">
+        <ul class="pluginList">
+
+{% for item in pagination %}
+               <li> 
+
+<div  style="padding:20px 10px 5px 15px;padding-bottom: 15px">
+
+    <h3 class="title" style="margin-top: -10px;padding: 0px 0 0px !important;font-size: 1.4em;line-height: 22px!important;text-align: right!important;width: 100%;float: right;">
+        <a href="{{ path('_detail_article', {'slug': item.slug}) }}">{{ item.title }}</a>
+    </h3>
+   
+    <div class="row-fluid">    
+         <div class="span3"><a href="{{ path('_detail_article', {'slug': item.slug}) }}">
+                 <img  title="{{ item.title }}" class="img-frame" src="{% if item.getImage() != NULL %}{{  item.getImage() }} {% else %}  {{ asset('bundles/tunisiefeeds/images/urgent.jpg') }} {% endif %}" alt="{{ item.title }}"/></a></div>
+         <div class="span9" style="text-align: right"> 
+             <p>{{ item.description | truncate(450, true, '...') | raw }}</p>
+             <ul class="pluginLinks" style="position: relative;right: -6px;float: right;bottom: -6px;">
+                 <li><span  class="btn btn-info" ><i  class="icon-calendar f14 grIcon"></i> {{ item.createdAt|date('j F, Y')}}</span></li>
+                 <li><a rel="{{ item.title }}" href="{{ path('_detail_article', {'slug': item.slug}) }}" class="btn btn-primary btn-lg" role="button">إقرأ المزيد<span class="glyphicon glyphicon-list-alt"></span></a></li>
+              <li> <a rel="tag" class="btn btn-danger btn-lg" href="{% if item.feed.id != null %} {{ path('_category_article', {'type': 'feed', 'factory' : item.feed.factory, 'favicon' : item.feed.favicon}) }} {% else %} {{ path('_category_article', {'type': 'jarida',  'factory' : item.jarida.factory, 'favicon' : item.jarida.favicon}) }} {% endif %}" role="button">  {% if item.feed.id != null %} {{ item.feed.source }} {% else %} {{ item.jarida.source }} {% endif %} : مصدر<span class="glyphicon glyphicon-list-alt"></span></a></li>
+            </ul>
+                                    
+         </div>
+    </div> 
+
+</div>
+</li>
+{% endfor %}
+             
+<li class="adsense">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- annonce list -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7963319750770607"
+     data-ad-slot="7169837978"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</li>
+               
+        </ul>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+    
+    <div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+    </div>
+
+    </div>
+</div>
+    </div>
+    <div class="sidebar-ct">        
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- right1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:250px"
+     data-ad-client="ca-pub-7963319750770607"
+     data-ad-slot="2879239170"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- right2 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:250px;height:250px"
+                 data-ad-client="ca-pub-4215830426269552"
+                 data-ad-slot="2767509445"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            
+           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- right33 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:250px;height:250px"
+                 data-ad-client="ca-pub-4215830426269552"
+                 data-ad-slot="5720975844"></ins>
+            <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+    </div>
+    </div>
+ </div>
+ 
+<script type="text/javascript">
+            
+            $(function () {
+                
+                $(".ticker1").modernTicker({
+                    effect: "scroll",
+                    scrollInterval: 20,
+                    transitionTime: 500,
+                    autoplay: true
+                });
+                
+               
+            });
+            
+        </script>
+        
+<!-- AddThis Smart Layers BEGIN -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=itaboubi"></script>
+<!-- Go to http://www.addthis.com/get/smart-layers to customize -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=itaboubi"></script>
+<script type="text/javascript">
+  addthis.layers({
+    'theme' : 'light',
+    'share' : {
+      'position' : 'left',
+      'numPreferredServices' : 5
+    }, 
+    'follow' : {
+      'services' : [
+        {'service': 'facebook', 'id': 'pages/Tunisie-actualit%C3%A9/197097710372785'}
+      ]
+    },  
+    'whatsnext' : {}  
+  });
+</script>
+<div id="addthis_trendingcontent"></div>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=itaboubi"></script>
+<script type="text/javascript">
+addthis.box("#addthis_trendingcontent", {
+    feed_title : "",
+    feed_type : "clicked",
+    feed_period : "day",
+    num_links : 5,
+    height : "auto",
+    width : "auto"});
+</script>
+
+<!-- AddThis Welcome BEGIN -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=itaboubi"></script>
+<script type='text/javascript'>
+addthis.bar.initialize({'default':{
+	"backgroundColor": "#000000",
+	"buttonColor": "#4e69a2",
+	"textColor": "#FFFFFF",
+	"buttonTextColor": "#FFFFFF"
+},rules:[
+	{
+		"name": "Twitter",
+		"match": {
+			"referringService": "twitter"
+		},
+		"message": "If you find this page helpful:",
+		"action": {
+			"type": "button",
+			"text": "Tweet it!",
+			"verb": "share",
+			"service": "twitter"
+		}
+	},
+	{
+		"name": "Facebook",
+		"match": {
+			"referringService": "facebook"
+		},
+		"message": "Tell your friends about us:",
+		"action": {
+			"type": "button",
+			"text": "Partager",
+			"verb": "share",
+			"service": "facebook"
+		}
+	},
+	{
+		"name": "Google",
+		"match": {
+			"referrer": "google.com"
+		},
+		"message": "If you like this page, let Google know:",
+		"action": {
+			"type": "button",
+			"text": "+1",
+			"verb": "share",
+			"service": "google_plusone_share"
+		}
+	}
+]});
+</script>
+<!-- AddThis Welcome END -->
+<!-- AddThis Trending Content END -->
+<!-- AddThis Smart Layers END -->
+<!-- AddThis Smart Layers END -->
+<!-- AddThis Welcome END -->
+{% endblock %}

@@ -1,0 +1,8 @@
+# AcmeDemoBundle routes (to be removed)
+
+
+
+# AcmeDemoBundle routes (to be removed)
+tunisie_feeds:
+    resource: "@TunisieFeedsBundle/Controller/DefaultController.php"
+    type:     annotation

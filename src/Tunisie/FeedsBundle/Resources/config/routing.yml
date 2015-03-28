@@ -1,0 +1,7 @@
+_homepage:
+    pattern:  /
+    defaults: { _controller: TunisieFeedsBundle:Default:index }
+
+tunisie_feeds_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: TunisieFeedsBundle:Default:hello }
